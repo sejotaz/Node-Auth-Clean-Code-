@@ -1,4 +1,5 @@
 import { envs } from "./config"
+import { AppRoutes } from "./presentation/routes"
 import { Server } from "./presentation/servers"
 
 (() => {
@@ -8,9 +9,10 @@ import { Server } from "./presentation/servers"
 })()
 
 async function main() {
-  // todo: await base de datos
-  // todo: inicio de nuestro server
+  // TODO: await base de datos
+  // TODO: inicio de nuestro server
   new Server({
-    port: envs.PORT
+    port: envs.PORT,
+    routes: AppRoutes.routes
   }).start()
 }
