@@ -7,9 +7,9 @@ export class AuthRoutes {
     const router = Router()
     const controller = new AuthController()
 
-    router.use('/login', controller.loginUser)
+    router.post('/login', controller.loginUser)
 
-    router.use('/register', controller.registerUser)
+    router.post('/register', controller.registerUser)
  
 
     return router

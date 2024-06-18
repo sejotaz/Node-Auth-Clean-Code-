@@ -20,6 +20,11 @@ export class Server {
   }
   
   async start(){
+
+    // Middleware
+    this.app.use(express.json())
+    this.app.use(express.urlencoded({extended: true})) // x-www-form-url-enconded
+
     // Usar las rutas definidas
     this.app.use(this.routes)
 
