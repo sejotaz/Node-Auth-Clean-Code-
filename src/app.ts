@@ -1,4 +1,5 @@
 import { envs } from "./config"
+import { MongoDatabase } from "./data/mongodb"
 import { AppRoutes } from "./presentation/routes"
 import { Server } from "./presentation/servers"
 
@@ -9,7 +10,10 @@ import { Server } from "./presentation/servers"
 })()
 
 async function main() {
-  // TODO: await base de datos
+   await MongoDatabase.connect({
+    dbName: envs.MONGO_DB_NAME,
+    mongoUrl: envs.MONGO_URL,
+   })
   // TODO: inicio de nuestro server
   new Server({
     port: envs.PORT,
