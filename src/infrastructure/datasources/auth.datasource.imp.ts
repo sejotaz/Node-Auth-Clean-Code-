@@ -1,6 +1,7 @@
 import { UserModel } from "../../data/mongodb";
 import { AuthDatasource, CustomError, RegisterUserDto, UserEntity } from "../../domain";
 import { BcryptAdapter } from '../../config/bcrypt';
+import { UserMapper } from '../mappers/user.mapper';
 
 
 type HashFuction = (password: string) => string
@@ -36,13 +37,7 @@ export class AuthDatasourceImpl implements AuthDatasource{
 
       //3. Mapear la respuesta de nuestra entidad
       // TODO: Falta una mapper
-      return new UserEntity(
-        user.id, 
-        name,
-        email,
-        user.password,
-        user.roles,
-      )
+      return UserMapper.userEntityFromObject(user)
       
     } catch (error) {
       console.log({error})
